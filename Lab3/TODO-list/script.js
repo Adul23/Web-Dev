@@ -6,20 +6,16 @@ function addTask() {
       let li = document.createElement("li");
       li.textContent = task;
 
-      // Create the close button for each task
       let span = document.createElement("SPAN");
       let txt = document.createTextNode("\u00D7");
       span.className = "close";
       span.appendChild(txt);
       li.appendChild(span);
 
-      // Append the task to the list
       document.querySelector("#list-container").appendChild(li);
 
-      // Clear the input field
       input.value = "";
 
-      // Close the task when the close button is clicked
       span.addEventListener('click', function () {
           li.style.display = "none";
       });
