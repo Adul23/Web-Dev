@@ -1,0 +1,15 @@
+.product-list {
+    display: flex;              
+    flex-wrap: wrap;
+    flex-direction: row;           
+    gap: 20px;                  
+    justify-content: flex-start;
+    margin: 20px;              
+  }
+  
+  app-product-item {
+    width: 250px; 
+    text-align: center;
+    background-color: bisque;
+  }
+  

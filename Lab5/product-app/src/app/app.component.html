@@ -1,0 +1,19 @@
+<div class="app">
+  <h1>Product Categories</h1>
+  <div class="categories">
+    <button *ngFor="let category of categories" (click)="selectCategory(category)">
+      {{ category.name }}
+    </button>
+  </div>
+
+  <div *ngIf="selectedCategory">
+    <h2>{{ selectedCategory.name }} Products</h2>
+    <div *ngFor="let product of selectedCategory.products">
+      <app-product-item 
+        [product]="product" 
+        (like)="onLike($event)" 
+        (remove)="onRemove($event)">
+      </app-product-item>
+    </div>
+  </div>
+</div>
