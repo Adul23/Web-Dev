@@ -24,12 +24,16 @@ class VacancyByCompany(generics.ListAPIView):
 @api_view(['GET', 'POST'])    
 def ListVacancies(request):
     if request.method == 'GET':
-        serializer = VacancySerializer(Vacancy)
+        vacancies = Vacancy.objects.all()
+        serializer = VacancySerializer(vacancies, many=True)
         return Response(serializer.data)
     if request.method == 'POST':
-        serializer = VacancySerializer(Vacancy, data=request.data)
+        vacancies = Vacancy.objects.all()
+
+        serializer = VacancySerializer(data=request.data)
         if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
+            vacancy = serializer.save()
+            return Response(VacancySerializer(vacancy).data, status=201)
+        return Response(serializer.errors, status=400)
    
         
